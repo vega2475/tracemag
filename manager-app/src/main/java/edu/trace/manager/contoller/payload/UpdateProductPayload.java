@@ -1,0 +1,4 @@
+package edu.trace.manager.contoller.payload;
+
+public record UpdateProductPayload(String title, String details) {
+}
