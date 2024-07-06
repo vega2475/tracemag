@@ -1,7 +1,7 @@
-package edu.trace.manager.service;
+package edu.trace.catalogue.service;
 
-import edu.trace.manager.entity.Product;
-import edu.trace.manager.repository.ProductRepository;
+import edu.trace.catalogue.entity.Product;
+import edu.trace.catalogue.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

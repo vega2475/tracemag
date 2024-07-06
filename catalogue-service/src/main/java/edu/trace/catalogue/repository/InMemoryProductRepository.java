@@ -1,6 +1,6 @@
-package edu.trace.manager.repository;
+package edu.trace.catalogue.repository;
 
-import edu.trace.manager.entity.Product;
+import edu.trace.catalogue.entity.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

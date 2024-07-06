@@ -1,6 +1,6 @@
-package edu.trace.manager.service;
+package edu.trace.catalogue.service;
 
-import edu.trace.manager.entity.Product;
+import edu.trace.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
