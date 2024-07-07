@@ -1,8 +1,8 @@
 package edu.trace.manager.contoller;
 
+import edu.trace.manager.client.ProductsRestClient;
 import edu.trace.manager.contoller.payload.UpdateProductPayload;
 import edu.trace.manager.entity.Product;
-import edu.trace.manager.service.ProductService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @RequestMapping("catalogue/products/{productId:\\d+}")
 public class ProductController {
-    private final ProductService productService;
+    private final ProductsRestClient productsRestClient;
     @GetMapping
     public String getProduct(){
         return "catalogue/products/product";
@@ -29,18 +29,18 @@ public class ProductController {
 
     @ModelAttribute("product")
     public Product product(@PathVariable("productId") int productId){
-        return this.productService.findById(productId).orElseThrow();
+        return this.productsRestClient.findById(productId).orElseThrow();
     }
 
     @PostMapping("edit")
     public String updateProduct(@ModelAttribute("product") Product product, UpdateProductPayload updateProductPayload){
-        this.productService.updateProduct(product.getId(), updateProductPayload.title(), updateProductPayload.details());
-        return "redirect:/catalogue/products/%d".formatted(product.getId());
+        this.productsRestClient.updateProduct(product.id(), updateProductPayload.title(), updateProductPayload.details());
+        return "redirect:/catalogue/products/%d".formatted(product.id());
     }
 
     @PostMapping("delete")
     public String deleteProduct(@ModelAttribute("product") Product product){
-        this.productService.deleteProduct(product.getId());
+        this.productsRestClient.deleteProduct(product.id());
         return "redirect:/catalogue/products/list";
     }
 

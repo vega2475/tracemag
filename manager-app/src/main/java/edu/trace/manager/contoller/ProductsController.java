@@ -1,8 +1,8 @@
 package edu.trace.manager.contoller;
 
+import edu.trace.manager.client.ProductsRestClient;
 import edu.trace.manager.contoller.payload.NewProductPayload;
 import edu.trace.manager.entity.Product;
-import edu.trace.manager.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/catalogue/products")
 public class ProductsController {
-    private final ProductService productService;
+    private final ProductsRestClient productsRestClient;
 
     @GetMapping(value = "list")
     public String getProductsList(Model model){
-        model.addAttribute("products", this.productService.findAllProducts());
+        model.addAttribute("products", this.productsRestClient.findAllProducts());
         return "catalogue/products/list";
     }
 
@@ -27,7 +27,7 @@ public class ProductsController {
 
     @PostMapping("/create")
     public String createProduct(NewProductPayload payload){
-        Product product = this.productService.createProduct(payload.title(), payload.details());
-        return "redirect:/catalogue/products/%d".formatted(product.getId());
+        Product product = this.productsRestClient.createProduct(payload.title(), payload.details());
+        return "redirect:/catalogue/products/%d".formatted(product.id());
     }
 }
