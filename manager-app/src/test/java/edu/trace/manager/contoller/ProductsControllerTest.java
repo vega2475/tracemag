@@ -1,6 +1,7 @@
 package edu.trace.manager.contoller;
 
 import edu.trace.manager.client.ProductsRestClient;
+import edu.trace.manager.client.exception.BadRequestException;
 import edu.trace.manager.contoller.payload.NewProductPayload;
 import edu.trace.manager.entity.Product;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +13,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
