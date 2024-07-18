@@ -1,0 +1,9 @@
+tracemag:
+  services:
+    catalogue:
+      uri: http://localhost:8081
+server:
+  port: 8082
+logging:
+  level:
+    web: trace
