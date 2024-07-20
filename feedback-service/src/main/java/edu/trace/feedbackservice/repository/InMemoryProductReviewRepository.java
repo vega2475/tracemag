@@ -1,9 +1,7 @@
-package edu.trace.customerapp.repository;
+package edu.trace.feedbackservice.repository;
 
-import edu.trace.customerapp.entity.Product;
-import edu.trace.customerapp.entity.ProductReview;
+import edu.trace.feedbackservice.entity.ProductReview;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -1,7 +1,6 @@
-package edu.trace.customerapp.repository;
+package edu.trace.feedbackservice.repository;
 
-import edu.trace.customerapp.entity.FavouriteProduct;
-import lombok.RequiredArgsConstructor;
+import edu.trace.feedbackservice.entity.FavouriteProduct;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

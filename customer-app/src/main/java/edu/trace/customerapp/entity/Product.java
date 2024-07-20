@@ -1,4 +1,4 @@
 package edu.trace.customerapp.entity;
 
-public record Product (int id, String title, String details){}
-
+public record Product(int id, String title, String details) {
+}

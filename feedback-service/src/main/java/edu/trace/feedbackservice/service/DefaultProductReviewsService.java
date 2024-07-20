@@ -1,7 +1,8 @@
-package edu.trace.customerapp.service;
+package edu.trace.feedbackservice.service;
 
-import edu.trace.customerapp.entity.ProductReview;
-import edu.trace.customerapp.repository.ProductReviewRepository;
+
+import edu.trace.feedbackservice.entity.ProductReview;
+import edu.trace.feedbackservice.repository.ProductReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

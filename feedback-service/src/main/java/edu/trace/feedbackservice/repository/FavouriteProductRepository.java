@@ -1,6 +1,6 @@
-package edu.trace.customerapp.repository;
+package edu.trace.feedbackservice.repository;
 
-import edu.trace.customerapp.entity.FavouriteProduct;
+import edu.trace.feedbackservice.entity.FavouriteProduct;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
