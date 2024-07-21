@@ -43,6 +43,6 @@ public class WebClientFavouriteProductsClient implements FavouriteProductsClient
 
     @Override
     public Flux<FavouriteProduct> findFavouriteProducts() {
-        return webClient.get().uri("feedback-api/favourite/").retrieve().bodyToFlux(FavouriteProduct.class);
+        return webClient.get().uri("/feedback-api/favourite/products").retrieve().bodyToFlux(FavouriteProduct.class);
     }
 }
