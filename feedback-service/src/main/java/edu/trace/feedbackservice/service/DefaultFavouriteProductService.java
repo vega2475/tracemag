@@ -13,23 +13,23 @@ import java.util.UUID;
 public class DefaultFavouriteProductService implements FavouriteProductService {
     private final FavouriteProductRepository favouriteProductRepository;
     @Override
-    public Mono<FavouriteProduct> addProductToFavourites(int productId) {
-        FavouriteProduct favouriteProduct = new FavouriteProduct(UUID.randomUUID(), productId);
+    public Mono<FavouriteProduct> addProductToFavourites(int productId, String userId) {
+        FavouriteProduct favouriteProduct = new FavouriteProduct(UUID.randomUUID(), productId, userId);
         return this.favouriteProductRepository.save(favouriteProduct);
     }
 
     @Override
-    public Mono<Void> removeProductFromFavourite(int productId) {
-        return this.favouriteProductRepository.deleteByProductId(productId);
+    public Mono<Void> removeProductFromFavourite(int productId, String userId) {
+        return this.favouriteProductRepository.deleteByProductIdAndUserId(productId, userId);
     }
 
     @Override
-    public Mono<FavouriteProduct> findFavouriteProductByProduct(int productId) {
-        return this.favouriteProductRepository.findByProductId(productId);
+    public Mono<FavouriteProduct> findFavouriteProductByProduct(int productId, String userId) {
+        return this.favouriteProductRepository.findByProductIdAndUserId(productId, userId);
     }
 
     @Override
-    public Flux<FavouriteProduct> findFavouriteProducts() {
-        return this.favouriteProductRepository.findAll();
+    public Flux<FavouriteProduct> findFavouriteProducts(String userId) {
+        return this.favouriteProductRepository.findAllByUserId(userId);
     }
 }

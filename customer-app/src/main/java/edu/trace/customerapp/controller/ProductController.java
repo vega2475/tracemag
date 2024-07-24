@@ -7,9 +7,12 @@ import edu.trace.customerapp.client.exception.ClientBadRequestException;
 import edu.trace.customerapp.controller.payload.NewProductReviewPayload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.web.server.csrf.CsrfToken;
+import org.springframework.security.web.reactive.result.view.CsrfRequestDataValueProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import edu.trace.customerapp.entity.Product;
 
@@ -85,5 +88,12 @@ public class ProductController {
     public String handleNoSuchElementException(NoSuchElementException exception, Model model){
         model.addAttribute("error", exception.getMessage());
         return "errors/404";
+    }
+
+    @ModelAttribute
+    public Mono<CsrfToken> loadCsrfToken (ServerWebExchange exchange){
+        Mono<CsrfToken> attribute = exchange.getAttribute(CsrfToken.class.getName());
+        return attribute.doOnSuccess(csrfToken -> exchange.getAttributes()
+                .put(CsrfRequestDataValueProcessor.DEFAULT_CSRF_ATTR_NAME, csrfToken));
     }
 }

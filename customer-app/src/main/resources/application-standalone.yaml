@@ -3,7 +3,22 @@ tracemag:
     catalogue:
       uri: http://localhost:8081
 server:
-  port: 8082
+  port: 8084
 logging:
   level:
     web: trace
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: customer-app
+            client-secret: 2YiNnA7ZMu3Lwwiw7R29CtR3uQAG3H96
+            scope:
+              - openid
+              - view_catalogue
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8082/realms/tracemag
+            user-name-attribute: preferred_username
